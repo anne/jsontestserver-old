@@ -129,12 +129,12 @@ public class JsontestserverServlet extends HttpServlet {
 			}
 			else if (service.contains("malform")) {
 				//Send back malformed/damaged JSON
-				//We'll chop off the last } symbol.
+				//We'll snap off the last 4 characters to guarantee it's broken.
 				JSONObject malformed_ip = new JSONObject();
 				malformed_ip.put("ip", req.getRemoteAddr());
 				String malformed_data = malformed_ip.toString();
 				malformed_data = malformed_data.trim();
-				malformed_data = malformed_data.substring(0, malformed_data.length() - 1);
+				malformed_data = malformed_data.substring(0, malformed_data.length() - 4);
 				
 				response_data = malformed_data;
 			}
